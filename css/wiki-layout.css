@@ -1,4 +1,34 @@
-/* 상단 내비게이션 */
+/* =========================================
+   [무빙건 전용] Modern Tech Blog Theme
+   가독성 최우선, 깔끔하고 트렌디한 모던 UI
+========================================= */
+
+/* --- 1. 모던 테마 변수 설정 --- */
+:root {
+  --primary-color: #3182f6; /* 트렌디한 토스 블루 */
+  --primary-hover: #1b64da;
+  --bg-color: #f9fafb; /* 눈이 편안한 아주 밝은 회색 */
+  --card-bg: #ffffff; /* 카드 배경은 순백색 */
+  --text-main: #333d4b; /* 완전 검은색보다 부드러운 진회색 */
+  --text-desc: #6b7684; /* 부가 설명용 부드러운 회색 */
+  --divider-color: #f2f4f6; /* 연한 구분선 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #191f28; /* 제목은 더 진하게 강조 */
+}
+
+/* --- 2. 상단 내비게이션 (Glassmorphism 투명 효과) --- */
 .top-nav {
   position: sticky;
   top: 0;
@@ -6,84 +36,96 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  height: 56px;
-  background-color: var(--nav-bg-color);
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 */
+  backdrop-filter: blur(12px); /* 배경 흐림 효과 */
   border-bottom: 1px solid var(--divider-color);
-  z-index: 10;
+  z-index: 100;
 }
 
 .nav-logo {
   font-family: "Jua", serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
 }
 
 .nav-links {
   display: flex;
   gap: 24px;
-  list-style: none;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--font-default-color);
-  font-size: 0.9rem;
-  transition: color 0.2s;
+  color: var(--text-desc);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .nav-links a:hover {
   color: var(--primary-color);
+  background-color: rgba(49, 130, 246, 0.05); /* 마우스 올리면 연한 파란색 배경 */
 }
 
-/* 프로필 히어로 */
+/* --- 3. 프로필 히어로 --- */
 .hero {
   display: flex;
   justify-content: center;
-  padding: 64px 32px;
-  background-color: var(--hero-bg-color);
+  padding: 80px 32px;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--divider-color);
 }
 
 .profile-card {
   display: flex;
   align-items: center;
-  gap: 32px;
-  max-width: 600px;
+  gap: 40px;
+  max-width: 650px;
 }
 
 .profile-image {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background-color: #ddd;
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
   flex-shrink: 0;
   overflow: hidden;
+  border: 4px solid #fff;
 }
 
 .profile-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .profile-info h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 8px;
 }
 
 .profile-info .tagline {
-  color: #777;
-  line-height: 1.6;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+  background-color: rgba(49, 130, 246, 0.1);
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-block;
 }
 
-/* 메인 콘텐츠 */
+/* --- 4. 메인 콘텐츠 --- */
 main {
-  max-width: 780px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 40px 24px;
 }
 
 .content-section {
-  padding: 48px 0;
+  padding: 50px 0;
   border-bottom: 1px solid var(--divider-color);
 }
 
@@ -92,32 +134,94 @@ main {
 }
 
 .content-section h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-bottom: 16px;
 }
 
-.content-section > p,
 .section-desc {
-  color: #666;
-  line-height: 1.8;
+  color: var(--text-desc);
+  font-size: 1.05rem;
   margin-bottom: 24px;
 }
 
-/* 갤러리 그리드 */
+a {
+  color: var(--primary-color);
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+/* --- 5. 기본 정보 (테이블) --- */
+.info-table {
+  width: 100%;
+  border-collapse: separate; /* 모서리 둥글게 하기 위해 변경 */
+  border-spacing: 0;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--divider-color);
+}
+
+.info-table th, .info-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--divider-color);
+  text-align: left;
+}
+
+.info-table tr:last-child th,
+.info-table tr:last-child td {
+  border-bottom: none;
+}
+
+.info-table th {
+  width: 140px;
+  background-color: #fcfcfc;
+  color: var(--text-desc);
+  font-weight: 700;
+}
+
+/* --- 6. 인생 갤러리 (폴라로이드 스타일 카드) --- */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 20px;
 }
 
-.gallery-grid img {
+.gallery-item {
+  background-color: var(--card-bg);
+  padding: 12px; /* 사진 주위에 흰 여백을 주어 액자 느낌 */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px); /* 마우스 올리면 부드럽게 떠오름 */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 4px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  cursor: pointer;
 }
 
-/* 인생 작품 카드 */
+.gallery-item p {
+  text-align: center;
+  margin: 12px 0 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* --- 7. 인생 작품 (리스트 카드) --- */
 .works-list {
   display: flex;
   flex-direction: column;
@@ -126,19 +230,26 @@ main {
 
 .work-card {
   display: flex;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: var(--card-bg-color);
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--divider-color);
+  transition: transform 0.2s ease;
+}
+
+.work-card:hover {
+  transform: scale(1.01); /* 아주 살짝 커지는 효과 */
 }
 
 .work-thumbnail {
-  width: 140px;
-  height: 180px;
-  background-color: #ddd;
-  border-radius: 4px;
-  flex-shrink: 0;
+  width: 160px;
+  height: 220px;
+  border-radius: 8px;
   overflow: hidden;
+  flex-shrink: 0;
+  background-color: #eee;
 }
 
 .work-thumbnail img {
@@ -147,197 +258,86 @@ main {
   object-fit: cover;
 }
 
+.work-card video {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid var(--divider-color);
+}
+
 .work-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .work-info p {
-  color: #666;
+  color: var(--text-desc);
   line-height: 1.6;
 }
 
-/* TIL */
-.til-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.til-item {
-  padding: 20px;
-  border-left: 3px solid var(--primary-color);
-  background-color: var(--card-bg-color);
-  border-radius: 0 8px 8px 0;
-}
-
-.til-item time {
-  font-size: 0.85rem;
-  color: #999;
-}
-
-.til-item h3 {
-  font-size: 1.1rem;
-  margin: 8px 0;
-}
-
-.til-item p {
-  color: #666;
-  line-height: 1.6;
-}
-
-/* 방명록 */
-.comment-form-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 32px;
-}
-
-.comment-form-container input,
-.comment-form-container textarea {
-  padding: 12px;
-  border: 1px solid var(--divider-color);
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 0.95rem;
-}
-
-.comment-form-container textarea {
-  min-height: 80px;
-  resize: vertical;
-}
-
-.comment-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-}
-
-.comment-buttons button {
-  padding: 8px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.comment-buttons button[type="button"] {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-
-.comment-buttons button[type="reset"] {
-  background-color: #eee;
-  color: #666;
-}
-
-.comment-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.comment-item {
-  padding: 16px;
-  background-color: var(--card-bg-color);
-  border-radius: 8px;
-}
-
-.comment-item strong {
-  font-size: 0.9rem;
-  color: var(--primary-color);
-}
-
-.comment-item p {
-  margin-top: 6px;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* 푸터 */
-footer {
-  text-align: center;
-  padding: 32px;
-  color: #aaa;
-  font-size: 0.85rem;
-}
-
-/* 기본 정보 테이블 */
-.info-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.info-table th,
-.info-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--divider-color);
-  text-align: left;
-}
-
-.info-table th {
-  width: 140px;
-  color: #555;
-  font-weight: 700;
-  background-color: var(--card-bg-color);
-}
-
-.info-table td {
-  color: #333;
-}
-
-/* TIL 작성 폼 */
+/* --- 8. TIL 작성 폼 --- */
 .til-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 24px;
-  margin-bottom: 32px;
+  gap: 20px;
+  padding: 32px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   border: 1px solid var(--divider-color);
-  border-radius: 8px;
-  background-color: var(--card-bg-color);
+  margin-bottom: 40px;
 }
 
-.til-form .form-group {
+.form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .til-form label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #555;
+  color: var(--text-main);
 }
 
 .til-form input,
 .til-form textarea {
-  padding: 10px 12px;
-  border: 1px solid var(--divider-color);
-  border-radius: 6px;
+  padding: 12px 16px;
+  border: 1px solid #d1d6db;
+  border-radius: 8px;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.til-form input:focus,
+.til-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.2); /* 포커스 시 파란색 외곽선 발광 */
 }
 
 .til-form textarea {
-  min-height: 80px;
+  min-height: 120px;
   resize: vertical;
 }
 
-.til-form .form-actions {
+.form-actions {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   justify-content: flex-end;
 }
 
 .til-form button {
-  padding: 8px 20px;
+  padding: 10px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: background-color 0.2s;
 }
 
 .til-form button[type="submit"] {
@@ -345,27 +345,91 @@ footer {
   color: #fff;
 }
 
+.til-form button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+}
+
 .til-form button[type="reset"] {
-  background-color: #eee;
-  color: #666;
+  background-color: #f2f4f6;
+  color: var(--text-desc);
 }
 
-/* 영상 삽입 */
-.work-card iframe,
-.work-card video {
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 16 / 9;
-  border: none;
-  border-radius: 4px;
+.til-form button[type="reset"]:hover {
+  background-color: #e5e8eb;
 }
 
-/* 변수 */
-:root {
-  --primary-color: #4a7c59;
-  --nav-bg-color: #fff;
-  --hero-bg-color: #f8faf8;
-  --card-bg-color: #fafafa;
-  --divider-color: #e8e8e8;
-  --font-default-color: #333;
+/* --- 9. TIL 리스트 --- */
+.til-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.til-item {
+  padding: 24px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color); /* 좌측 포인트 컬러 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.til-item time {
+  font-size: 0.85rem;
+  color: var(--text-desc);
+  font-weight: 500;
+}
+
+.til-item h3 {
+  font-size: 1.2rem;
+  margin: 8px 0;
+  color: var(--text-main);
+}
+
+/* --- 10. 푸터 --- */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-desc);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--divider-color);
+}
+
+/* --- 11. 이미지 모달 --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 너무 까맣지 않게 반투명 처리 */
+  backdrop-filter: blur(4px); /* 뒤에 화면이 살짝 흐리게 보임 */
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-overlay img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.close-btn:hover {
+  opacity: 1;
 }
